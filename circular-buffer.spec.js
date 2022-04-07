@@ -24,10 +24,26 @@ describe("CircularBuffer", () => {
 test("reading 3 recently written items", () => {
   const buffer = new CircularBuffer(3);
   buffer.write("1");
-  // console.log(buffer);
   buffer.write("2");
-  // console.log(buffer);
   buffer.write("3");
-  // console.log(buffer);
+  expect(buffer.read()).toBe("3");
+});
+
+test("removing an item", () => {
+  const buffer = new CircularBuffer(3);
+  buffer.write("1");
+  buffer.write("2");
+  buffer.write("3");
+  buffer.clear();
+  expect(buffer.read()).toBe("3");
+});
+
+test("removing two items", () => {
+  const buffer = new CircularBuffer(3);
+  buffer.write("1");
+  buffer.write("2");
+  buffer.write("3");
+  buffer.clear();
+  buffer.clear();
   expect(buffer.read()).toBe("3");
 });
