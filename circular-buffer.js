@@ -1,27 +1,29 @@
-//
-// This is only a SKELETON file for the 'Circular Buffer' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 class CircularBuffer {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(size) {
+    this.buffer = [];
+    this.size = size;
+    this.indexOld = 0;
+    this.indexNew = -1;
   }
 
   write() {
-    throw new Error('Remove this statement and implement this function');
+    throw new Error("Remove this statement and implement this function");
   }
 
   read() {
-    throw new Error('Remove this statement and implement this function');
+    if (this.buffer.length === 0) {
+      throw new BufferEmptyError();
+    }
+
+    return this.buffer[this.indexNew];
   }
 
   forceWrite() {
-    throw new Error('Remove this statement and implement this function');
+    throw new Error("Remove this statement and implement this function");
   }
 
   clear() {
-    throw new Error('Remove this statement and implement this function');
+    throw new Error("Remove this statement and implement this function");
   }
 }
 
@@ -29,12 +31,12 @@ export default CircularBuffer;
 
 export class BufferFullError extends Error {
   constructor() {
-    throw new Error('Remove this statement and implement this function');
+    super("Buffer full");
   }
 }
 
 export class BufferEmptyError extends Error {
   constructor() {
-    throw new Error('Remove this statement and implement this function');
+    super("Buffer empty");
   }
 }
