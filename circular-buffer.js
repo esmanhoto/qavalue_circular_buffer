@@ -34,7 +34,14 @@ class CircularBuffer {
   }
 
   clear() {
-    throw new Error("Remove this statement and implement this function");
+    this.buffer.splice(this.indexOld, 1);
+    // this.buffer[this.indexOld] = "";
+    // this.indexOld++;
+    if (this.indexOld < this.indexNew) {
+      this.indexNew = this.indexNew - 1;
+    } else {
+      this.indexOld = this.indexOld % this.buffer.length;
+    }
   }
 }
 
