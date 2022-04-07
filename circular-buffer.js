@@ -29,8 +29,10 @@ class CircularBuffer {
     return this.buffer[this.indexNew];
   }
 
-  forceWrite() {
-    throw new Error("Remove this statement and implement this function");
+  forceWrite(element) {
+    this.buffer[this.indexOld] = element;
+    this.indexOld = (this.indexOld + 1) % this.size;
+    this.indexNew = (this.indexNew + 1) % this.size;
   }
 
   clear() {
