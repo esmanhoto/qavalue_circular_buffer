@@ -6,8 +6,19 @@ class CircularBuffer {
     this.indexNew = -1;
   }
 
-  write() {
-    throw new Error("Remove this statement and implement this function");
+  write(element) {
+    if (this.buffer.length < this.size && this.indexNew - 1 < this.indexOld) {
+      this.indexOld = (this.indexOld + 1) % this.size;
+    }
+    if (this.buffer.length < this.size) {
+      this.indexNew = (this.indexNew + 1) % this.size;
+      // if (this.indexNew - 1 > this.indexOld) {
+      //   this.indexOld++;
+      // }
+      this.buffer.splice(this.indexNew, 0, element);
+    } else {
+      throw new BufferFullError();
+    }
   }
 
   read() {
