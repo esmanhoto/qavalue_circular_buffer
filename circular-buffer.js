@@ -12,9 +12,6 @@ class CircularBuffer {
     }
     if (this.buffer.length < this.size) {
       this.indexNew = (this.indexNew + 1) % this.size;
-      // if (this.indexNew - 1 > this.indexOld) {
-      //   this.indexOld++;
-      // }
       this.buffer.splice(this.indexNew, 0, element);
     } else {
       throw new BufferFullError();
@@ -37,8 +34,6 @@ class CircularBuffer {
 
   clear() {
     this.buffer.splice(this.indexOld, 1);
-    // this.buffer[this.indexOld] = "";
-    // this.indexOld++;
     if (this.indexOld < this.indexNew) {
       this.indexNew = this.indexNew - 1;
     } else {
